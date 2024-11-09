@@ -19,43 +19,47 @@ namespace Game.Examples {
         
         private void Start() {
             PlayerManager.SetMinigameActionMap();
-            if (PlayerManager.AreAllPlayersConnected()) {  
-                BindPawns();
-            }
-            else { 
-                // wait to bind pawns until all players are connected
-                PlayerJoinManager.onAllPlayersJoined.AddListener(BindPawns);
-                Time.timeScale = 0;
-            }
+            BindPawns();
             
-            PlayerJoinManager.onPlayerLeft.AddListener(OnPlayerLeft);
+            PlayerManager.onPlayerConnected.AddListener(BindPawn);
+            
+            
+            PlayerManager.onPlayerDisconnected.AddListener(OnPlayerLeft);
         }
-        
+
         private void BindPawns() {
-            if (pawns.Count <= 0) return; // prevent errors when no pawns are set
-            if (pawns.Count != PlayerManager.GetConnectedPlayerInputs().Count) {
-                string message = $"Number of pawns ({pawns.Count}) does not match number of connected players ({PlayerManager.GetConnectedPlayerInputs().Count})";
-                Debug.LogError(message);
-            }
-            
-            for (int i = 0; i < pawns.Count; i++) {
-                if (i < PlayerManager.players.Count) {
-                    PawnBindingManager.BindPlayerInputToPawn(i, pawns[i]);
+            foreach(Player player in PlayerManager.players) {
+                int index = player.playerIndex;
+                if(index < pawns.Count) {
+                    PawnBindingManager.BindPlayerInputToPawn(index, pawns[index]);
                 }
             }
+        }
+        
+        private void BindPawn(int playerIndex) {
+            if (AreAllPawnsBound()) {
+                Debug.LogWarning($"PawnManager: All pawns are already bound. Player index {playerIndex} was not bound.");
+                return;
+            }
             
-            PlayerJoinManager.onAllPlayersJoined.RemoveListener(BindPawns); // stop listening because pawns are now bound
-            Time.timeScale = 1;
+            if(pawns.Count <= playerIndex) {
+                Debug.LogError($"PawnManager: Pawn missing for player index {playerIndex}");
+                return;
+            }
+            PawnBindingManager.BindPlayerInputToPawn(playerIndex, pawns[playerIndex]);
         }
         
         private void OnDisable() {
             PlayerJoinManager.onAllPlayersJoined.RemoveListener(BindPawns); // stop listening when this component is disabled
         }
 
-        private void OnPlayerLeft() {
-            PawnBindingManager.UnBindAllPawns();
-            PlayerJoinManager.onAllPlayersJoined.AddListener(BindPawns);
-            Time.timeScale = 0;
+        private void OnPlayerLeft(int playerIndex) {
+            PawnBindingManager.UnbindPlayerInputFromPawn(pawns[playerIndex]);
+            PlayerManager.onPlayerConnected.AddListener(BindPawn);
+        }
+        
+        private bool AreAllPawnsBound() {
+            return pawns.TrueForAll(pawn => pawn.playerIndex >= 0);
         }
     }
 }
