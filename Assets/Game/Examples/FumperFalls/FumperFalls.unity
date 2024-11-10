@@ -1017,6 +1017,7 @@ GameObject:
   m_Component:
   - component: {fileID: 736634831}
   - component: {fileID: 736634830}
+  - component: {fileID: 736634832}
   m_Layer: 0
   m_Name: PawnManager
   m_TagString: Untagged
@@ -1056,6 +1057,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &736634832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736634829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa2a8904ec79af48a080e9ca7ba4351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: -1
+  controlBindings:
+  - controlToBind: 0
+    onRelease: 0
+    boundEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 779269814}
+          m_TargetAssemblyTypeName: 
+          m_MethodName: 
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - controlToBind: 1
+    onRelease: 0
+    boundEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &779269814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,7 +1888,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 713718654}
-  - {fileID: 736634831}
   - {fileID: 1392574687}
   - {fileID: 951078559}
   - {fileID: 1447818455}
@@ -1867,3 +1903,4 @@ SceneRoots:
   - {fileID: 423871329}
   - {fileID: 357572262}
   - {fileID: 1523831724}
+  - {fileID: 736634831}

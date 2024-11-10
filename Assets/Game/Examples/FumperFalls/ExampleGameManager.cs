@@ -58,6 +58,7 @@ public class ExampleGameManager : MonoBehaviour {
     private void StopMinigame() {
         StartCoroutine(EndMinigame());
     }
+    
     IEnumerator EndMinigame() {
         // "FINISH" ui
         yield return new WaitForSeconds(2);
