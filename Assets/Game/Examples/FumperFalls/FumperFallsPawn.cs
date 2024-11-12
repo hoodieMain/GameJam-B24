@@ -16,7 +16,7 @@ namespace Game.Examples {
 
         // Disable Unity's default gravity when this component is added
         private void Reset() {
-            GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<Rigidbody>().useGravity = true;
         }
 
         private void Awake() {

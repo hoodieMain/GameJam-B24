@@ -17,6 +17,8 @@ namespace Game.Examples {
         private float _initialSpeed;
 
         private Vector2 _moveInput = Vector2.zero;
+        private Vector2 _moveTurret = Vector2.zero;
+        private Vector2 _isShooting = Vector2.zero;
 
         private Rigidbody _rigidbody;
         private bool _isSprinting;
@@ -52,16 +54,25 @@ namespace Game.Examples {
             // Move
             if (context.action.name == "Move") _moveInput = context.ReadValue<Vector2>();
 
-            // Jump
-            if (context.action.name == "ButtonA") {
-                if (!_isGrounded) return;
+            // // Jump
+            // if (context.action.name == "ButtonA") {
+            //     if (!_isGrounded) return;
 
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, _rigidbody.velocity.z);
-                _isGrounded = false;
+            //     _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, _rigidbody.velocity.z);
+            //     _isGrounded = false;
+            // }
+
+            // // Sprint
+            // if (context.action.name == "ButtonB") _isSprinting = true;
+
+            // Move Turret
+            if (context.action.name == "Look") {
+                _moveTurret = context.ReadValue<Vector2>();
             }
 
-            // Sprint
-            if (context.action.name == "ButtonB") _isSprinting = true;
+            if (context.action.name == "ButtonR") {
+
+            }
         }
 
         // Handle input from released buttons
