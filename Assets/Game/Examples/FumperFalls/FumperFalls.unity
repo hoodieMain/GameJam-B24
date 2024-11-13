@@ -1414,6 +1414,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 20
   timer: 0
+  score0: 0
+  score1: 0
+  score2: 0
+  score3: 0
 --- !u!4 &1247645092
 Transform:
   m_ObjectHideFlags: 0
@@ -1444,7 +1448,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
