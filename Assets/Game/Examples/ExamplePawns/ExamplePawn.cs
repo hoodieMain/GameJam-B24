@@ -18,9 +18,11 @@ namespace Game.Examples {
 
         private Vector2 _moveInput = Vector2.zero;
         private Vector2 _moveTurret = Vector2.zero;
+        private float playerAim = 0f;
         private Vector2 _isShooting = Vector2.zero;
 
         private Rigidbody _rigidbody;
+        private Transform _turret;
         private bool _isSprinting;
 
         // Disable Unity's default gravity when this component is added
@@ -31,6 +33,8 @@ namespace Game.Examples {
         private void Awake() {
             _rigidbody = GetComponent<Rigidbody>();
             _initialSpeed = speed;
+            // this relies on turret being second child of pawn object so don't fw that
+            _turret = this.gameObject.transform.GetChild(1);
         }
 
         // Handle movement and physics
@@ -42,6 +46,8 @@ namespace Game.Examples {
             _rigidbody.velocity += gravity * Time.deltaTime * Vector3.up;
             // Movement
             _rigidbody.velocity = new Vector3(_moveInput.x * speed, _rigidbody.velocity.y, _moveInput.y * speed);
+            // Looking 
+            _turret.rotation = new Quaternion(0f, playerAim, 0f, 1);
         }
 
         // Handle grounded state
@@ -68,6 +74,7 @@ namespace Game.Examples {
             // Move Turret
             if (context.action.name == "Look") {
                 _moveTurret = context.ReadValue<Vector2>();
+                playerAim = Mathf.Atan2(_moveTurret.x, _moveTurret.y);
             }
 
             if (context.action.name == "ButtonR") {
