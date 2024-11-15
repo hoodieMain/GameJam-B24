@@ -8,6 +8,7 @@ namespace Game.Examples {
     [RequireComponent(typeof(Rigidbody))]
     public class ExamplePawn : Pawn {
         [SerializeField] private float speed = 8f;
+        [SerializeField] private float projectileSpeed = 25f;
         [SerializeField] private float sprintMultiplier = 1.4f;
         [SerializeField] private float jumpForce = 20f;
         [SerializeField] private float gravity = -50f;
@@ -24,6 +25,9 @@ namespace Game.Examples {
         private Rigidbody _rigidbody;
         private Transform _turret;
         private bool _isSprinting;
+
+        public GameObject scoop;
+        private GameObject tempScoop;
 
         // Disable Unity's default gravity when this component is added
         private void Reset() {
@@ -78,7 +82,8 @@ namespace Game.Examples {
             }
 
             if (context.action.name == "ButtonR") {
-
+                tempScoop = Instantiate(scoop, transform.position, Quaternion.identity);
+                tempScoop.GetComponent<Rigidbody>().velocity = new Vector3(_moveTurret.x * projectileSpeed, 0, _moveTurret.y * projectileSpeed);
             }
         }
 

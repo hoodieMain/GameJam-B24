@@ -22,10 +22,14 @@ public class LemmingUnalive : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //this can be set later to logic to check the identity of a shot -- all Increment needs is to be passed a number 0-3
-        Pawn pawn = other.GetComponent<Pawn>();
-        pawnID = pawn.playerIndex;
-        manager.GetComponent<ExampleGameManager>().Increment(pawnID);
+        if(other.GetComponent<Pawn>() == null)
+        {
+            //Pawn pawn = other.GetComponent<Pawn>();
+            pawnID = other.GetComponent<ScoopDetails>().playerID;
+            manager.GetComponent<ExampleGameManager>().Increment(pawnID);
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
 
-        Destroy(gameObject);
     }
 }

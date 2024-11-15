@@ -1008,9 +1008,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIndex: -1
   speed: 8
+  projectileSpeed: 12
   sprintMultiplier: 1.4
   jumpForce: 20
   gravity: -50
+  isScoop: 0
+  scoop: {fileID: 532051085879943902, guid: 37162d779c8aed049b6774d2d8675190, type: 3}
 --- !u!4 &430922545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c7428a18015603e418c490270ed9c40e, type: 3}
@@ -1166,9 +1169,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIndex: -1
   speed: 8
+  projectileSpeed: 12
   sprintMultiplier: 1.4
   jumpForce: 20
   gravity: -50
+  isScoop: 0
+  scoop: {fileID: 2119092435321946408, guid: bcd734ce818050c469bc0827c3274c23, type: 3}
 --- !u!1001 &507008955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1621,9 +1627,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIndex: -1
   speed: 8
+  projectileSpeed: 12
   sprintMultiplier: 1.4
   jumpForce: 20
   gravity: -50
+  isScoop: 0
+  scoop: {fileID: 7162350912245824748, guid: b8cc145098e329d4c9608c3cfb485cd3, type: 3}
 --- !u!1001 &875435012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2371,9 +2380,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIndex: -1
   speed: 8
+  projectileSpeed: 12
   sprintMultiplier: 1.4
   jumpForce: 20
   gravity: -50
+  isScoop: 0
+  scoop: {fileID: 6194302892842831364, guid: 296786f24023e9f4ebec52e5722eef9f, type: 3}
 --- !u!1 &1523831718
 GameObject:
   m_ObjectHideFlags: 0
