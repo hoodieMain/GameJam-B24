@@ -42,6 +42,7 @@ namespace Game.Examples {
             if (context.action.name == "Move") _moveInput = context.ReadValue<Vector2>();
             // Aim 
             if (context.action.name == "Look") _lookInput = context.ReadValue<float>();
+
         }
     }
 }

@@ -84,6 +84,8 @@ namespace Game.Examples {
             if (context.action.name == "ButtonR") {
                 tempScoop = Instantiate(scoop, transform.position, Quaternion.identity);
                 tempScoop.GetComponent<Rigidbody>().velocity = new Vector3(_moveTurret.x * projectileSpeed, 0, _moveTurret.y * projectileSpeed);
+                //firesound
+                GetComponent<AudioSource>().Play();
             }
         }
 
